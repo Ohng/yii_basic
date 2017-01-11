@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
 use yii\grid\GridView;
 use app\models\CountriesSearch;
 
