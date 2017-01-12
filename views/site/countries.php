@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $searchModel = new CountriesSearch();
 $dataProvider = $searchModel->search(Yii::$app->request->get());
+$dataProvider->pagination->pageSize=50;
 
 ?>
 
@@ -18,13 +19,38 @@ $dataProvider = $searchModel->search(Yii::$app->request->get());
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+
+
+
         <?= GridView::widget([
-        'dataProvider' => $dataProvider,
+            'id' => 'countryGrid',
+            'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            'columns'=>[],
+            'tableOptions' => ['id'=>'countryTable'],
+            'columns'=>[
+                'id',
+               'country_name',
+                'country_code',
+                'population'
+            ],
         ]);
         ?>
+
+        <?php
+         \bluezed\floatThead\FloatThead::widget(
+            [
+                'tableId' => 'countryTable',
+                'options' => [
+                    'top'=>'50',
+                    'scrollContainer'=>true
+                ]
+            ]
+        );
+        ?>
+
     </p>
 
 </div>
+
+
 
